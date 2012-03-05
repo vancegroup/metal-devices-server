@@ -1,0 +1,28 @@
+cmake_minimum_required(VERSION 2.8.3)
+project(metal-devices-server)
+
+include(ExternalProject)
+
+ExternalProject_Add(wiiuse
+	SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/wiiuse
+	CMAKE_CACHE_ARGS
+	-DCMAKE_INSTALL_PREFIX:PATH=<INSTALL_DIR>
+	-DCMAKE_BUILD_TYPE:STRING=RelWithDebInfo
+	-DBUILD_TESTING:BOOL=OFF
+)
+
+ExternalProject_Get_Property(wiiuse INSTALL_DIR)
+set(WIIUSE_ROOT_DIR ${INSTALL_DIR})
+
+ExternalProject_Add(vrpn
+	SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/vrpn
+	CMAKE_CACHE_ARGS
+		-DCMAKE_BUILD_TYPE:STRING=RelWithDebInfo
+		-DWIIUSE_ROOT_DIR:PATH=${WIIUSE_ROOT_DIR}
+		-DWIIUSE_LIBRARY:PATH=${WIIUSE_ROOT_DIR}/lib/libwiiuse.so
+		-DVRPN_USE_WIIUSE:BOOL=ON
+		-DVRPN_GPL_SERVER:BOOL=ON
+		-DBUILD_TESTING:BOOL=OFF
+	DEPENDS wiiuse
+)
+
