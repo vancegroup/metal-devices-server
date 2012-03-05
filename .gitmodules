@@ -1,0 +1,3 @@
+[submodule "src/wiiuse"]
+	path = src/wiiuse
+	url = git://github.com/rpavlik/wiiuse.git
