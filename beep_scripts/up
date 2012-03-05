@@ -1,0 +1,25 @@
+#!/bin/sh
+G4='-f 392.00'
+C5='-f 523.25'
+E5='-f 659.26'
+G5='-f 783.99'
+A5='-f 880.00'
+B5='-f 987.77'
+
+whole='-l 2048'
+dottedhalf='-l 1536'
+half='-l 1024'
+dottedquarter='-l 768'
+quarter='-l 512'
+dottedeighth='-l 384'
+eighth='-l 256'
+sixteenth='-l 128'
+
+smallspace='-D 64'
+longspace='-D 128'
+
+beep \
+	$eighth $G5 $smallspace -n \
+	$eighth $A5 $smallspace -n \
+	$quarter $B5
+
