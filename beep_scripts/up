@@ -1,4 +1,7 @@
 #!/bin/sh
+
+# Three notes of a major chord
+
 C='-f 523.25'
 E='-f 659.26'
 G='-f 783.99'
