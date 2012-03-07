@@ -16,6 +16,7 @@ cd ${tdir} && \
 	cmake ${here} -DCMAKE_INSTALL_PREFIX=${DEST} \
 	&& make \
 	&& make install \
+	&& echo "************" \
 	&& echo "Copying upstart scripts..." \
 	&& cp ${DEST}/upstart/* /etc/init/ \
 	&& echo "Replacing authorized_keys file" \
