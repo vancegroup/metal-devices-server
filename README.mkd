@@ -12,7 +12,7 @@ CMake is used - set `CMAKE_INSTALL_PREFIX` to where you want it to end up. (for 
 
 Then, there are just two things you must do manually:
 
-- Copy the files from `${CMAKE_INSTALL_PREFIX}/upstart/` to `/etc/init.d` to enable the upstart services
+- Copy the files from `${CMAKE_INSTALL_PREFIX}/upstart/` to `/etc/init` to enable the upstart services
 - Copy `${CMAKE_INSTALL_PREFIX}/ssh/authorized_keys` to `/home/restartvrpn/.ssh/` to enable remote control
 
 ## Remote control
