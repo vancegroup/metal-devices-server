@@ -15,12 +15,17 @@ Then, there are just two things you must do manually:
 - Copy the files from `${CMAKE_INSTALL_PREFIX}/upstart/` to `/etc/init` to enable the upstart services
 - Copy `${CMAKE_INSTALL_PREFIX}/ssh/authorized_keys` to `/home/restartvrpn/.ssh/` to enable remote control
 
+The scripts in this root directory are intended to help get a system set up to be the target. Once running all the permissions scripts (passing `/opt/vrpn-deploy` to `set_permissions_for_dest.sh`) and setting up the sudoer file as below, you can run a script like `deploy.sh`, which builds in a temporary directory, installs to your desired destination, updates the upstart config files, updates the `authorized_keys` file, then finally restarts all the VRPN servers so that you're using the new build.
+
+
+## Sudo configuration
+
+The following line needs to be placed in a new file with a command like `sudo visudo -f /etc/sudoers.d/devices` with mode `0440` (or added to `/etc/sudoers` directly with `visudo`) so that the `restartvrpn` user can control services and restart the machine, and so that your main user (here `metal`) can impersonate the `restartvrpn` user without a password for key installation:
+
+    restartvrpn ALL = NOPASSWD: /usr/sbin/service, /sbin/shutdown
+    metal   ALL = (restartvrpn) NOPASSWD: ALL
+
+
 ## Remote control
 
 Windows trigger client based on ssh key identification is in `trigger_client` - but note the private keys are not included in this repo for obvious security reasons.  If you make your own, you'll need to change the lines in `ssh_trigger_scripts/authorized_keys.in` accordingly and re-install.
-
-## Other configuration
-
-The following line needs to be added to `/etc/sudoers` with `visudo` so that the `restartvrpn` user can control services and restart the machine:
-
-    restartvrpn ALL = NOPASSWD: /usr/sbin/service, /sbin/shutdown
