@@ -1,0 +1,20 @@
+# VRPN server
+#
+
+description	"VRPN device server for left serial glove"
+start on ((local-filesystems and net-device-up IFACE!=lo)
+          and stopped udevtrigger)
+stop on runlevel [016]
+
+respawn
+
+
+env VRPN_HOME=@VRPN_HOME@
+env VRPN_CFG_DIR=@VRPN_CFG_DIR@
+
+script
+	export LD_LIBRARY_PATH=${VRPN_HOME}/lib
+	exec ${VRPN_HOME}/bin/vrpn_server 3885 -f ${VRPN_CFG_DIR}/vrpn-rightserialglove.cfg
+end script
+
+
