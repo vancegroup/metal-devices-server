@@ -27,3 +27,12 @@ ExternalProject_Add(vrpn
 	DEPENDS wiiuse
 )
 
+ExternalProject_Get_Property(vrpn INSTALL_DIR)
+set(VRPN_ROOT_DIR ${INSTALL_DIR})
+
+set(VRPN_BIN_DIR ${VRPN_ROOT_DIR}/bin)
+set(VRPN_CFG_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../vrpn_configs)
+set(BEEP_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../beep_scripts)
+set(LD_LIBRARY_PATH ${WIIUSE_ROOT_DIR}/lib)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/env.in ${CMAKE_CURRENT_BINARY_DIR}/.env)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/../Procfile ${CMAKE_CURRENT_BINARY_DIR}/Procfile COPYONLY)
