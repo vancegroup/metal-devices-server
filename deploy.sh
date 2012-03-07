@@ -19,6 +19,6 @@ cd ${tdir} && \
 	&& echo "Copying upstart scripts..." \
 	&& cp ${DEST}/upstart/* /etc/init/ \
 	&& echo "Replacing authorized_keys file" \
-	&& cat ${DEST}/ssh/authorized_keys | sudo -u ${AUTOUSER} tee ~${AUTOUSER}/.ssh/authorized_keys > /dev/null \
-	&& echo "Success! Calling restart-all-servers." \
-	&& ${DEST}/bin/restart-all-servers
+	&& cat ${DEST}/ssh/authorized_keys | sudo -u ${AUTOUSER} tee /home/${AUTOUSER}/.ssh/authorized_keys > /dev/null \
+	&& echo "Success! Calling restart-all-servers as ${AUTOUSER}." \
+	&& sudo -u ${AUTOUSER} ${DEST}/bin/restart-all-servers
