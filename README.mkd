@@ -1,0 +1,24 @@
+# METaL Devices Server
+
+This is an attempt to package and automate the setup currently used for the metal-devices server. It runs Ubuntu Server x64 11.04, with a Bluetooth adapter to talk to two Wii Remotes, and a 5DT dataglove on both hardware serial ports.
+
+Here, we're assuming that `restartvrpn` is the user created specifically for remote automated control (restarting server processes or the whole machine). You can set it to not have a password.
+
+## Build and Install
+
+CMake is used - set `CMAKE_INSTALL_PREFIX` to where you want it to end up. (for instance, `/opt/vrpn` works just dandy. Do a `make install` after configuring.
+
+Then, there are just two things you must do manually:
+
+- Copy the files from `${CMAKE_INSTALL_PREFIX}/upstart/` to `/etc/init.d` to enable the upstart services
+- Copy `${CMAKE_INSTALL_PREFIX}/ssh/authorized_keys` to `/home/restartvrpn/.ssh/` to enable remote control
+
+## Remote control
+
+Windows trigger client based on ssh key identification is in `trigger_client` - but note the private keys are not included in this repo for obvious security reasons.  If you make your own, you'll need to change the lines in `ssh_trigger_scripts/authorized_keys.in` accordingly and re-install.
+
+## Other configuration
+
+The following line needs to be added to `/etc/sudoers` with `visudo` so that the `restartvrpn` user can control services and restart the machine:
+
+    restartvrpn ALL = NOPASSWD: /usr/sbin/service, /sbin/shutdown
