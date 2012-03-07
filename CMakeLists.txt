@@ -4,7 +4,11 @@ project(metal-devices-server)
 # These are relative to CMAKE_INSTALL_PREFIX
 
 set(BIN_DIR bin)
-set(LIB_DIR lib)
+if(WIN32)
+	set(LIB_DIR bin)
+else()
+	set(LIB_DIR lib)
+endif()
 set(CFG_DIR etc)
 set(SSH_DIR ssh)
 set(UPSTART_DIR upstart)
