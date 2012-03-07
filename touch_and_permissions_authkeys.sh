@@ -1,10 +1,11 @@
 #!/bin/bash
-AUTOUSER=vrpnrestart
+AUTOUSER=restartvrpn
 function impersonate() {
-	sudo -U ${AUTOUSER} $@
+	sudo -u ${AUTOUSER} $@
 }
 
-impersonate mkdir -p ~${AUTOUSER}/.ssh
-impersonate touch ~${AUTOUSER}/.ssh/authorized_keys
-impersonate chgrp ${USER} ~${AUTOUSER}/.ssh/authorized_keys
-impersonate chmod g+rw ~${AUTOUSER}/.ssh/authorized_keys
+[ -d /home/${AUTOUSER}/.ssh ] || impersonate mkdir -p /home/${AUTOUSER}/.ssh
+impersonate touch /home/${AUTOUSER}/.ssh/authorized_keys
+sudo chgrp ${USER} /home/${AUTOUSER}/.ssh /home/${AUTOUSER}/.ssh/authorized_keys
+sudo chmod g+rw /home/${AUTOUSER}/.ssh/authorized_keys
+sudo chmod g+rx /home/${AUTOUSER}/.ssh
