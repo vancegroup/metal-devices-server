@@ -1,0 +1,15 @@
+# Trigger Scripts 
+
+This directory contains the `ssh.exe` binary from Git for Windows, its 
+dependencies, and a script named `trigger.vbs`. 
+
+You'll need to add a private key for each action you want to trigger, 
+named `{YOURACTION}_key` (in our case, we have `restartvrpn_key` and 
+`restartmachine_key`). They correspond to lines in the `authorized_keys` 
+file calling the scripts you want. 
+
+To perform one of the trigger actions, you just put the name of the 
+action as the first argument to `trigger.vbs` (it appends `_key` 
+automatically to get the ssh key). Good place to use a shortcut - you
+can just put the argument into the shortcut itself.
+
