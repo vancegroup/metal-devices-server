@@ -2,7 +2,7 @@
 
 This is an attempt to package and automate the setup currently used for the metal-devices server. It runs Ubuntu Server x64 11.04, with a Bluetooth adapter to talk to two Wii Remotes, and a 5DT dataglove on both hardware serial ports.
 
-Here, we're assuming that `restartvrpn` is the user created specifically for remote automated control (restarting server processes or the whole machine). You can set it to not have a password.
+Here, we're assuming that `restartvrpn` is the user created specifically for remote automated control (restarting server processes or the whole machine). You can set it to not have a password (prohibiting direct login).
 
 ## Build and Install
 
