@@ -2,7 +2,7 @@
 
 #beep
 
-cd $(dirname 0)
+cd $(dirname $0)
 ./down
 
 sudo service vrpn stop
