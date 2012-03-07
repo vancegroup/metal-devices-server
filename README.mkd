@@ -4,6 +4,8 @@ This is an attempt to package and automate the setup currently used for the meta
 
 Here, we're assuming that `restartvrpn` is the user created specifically for remote automated control (restarting server processes or the whole machine). You can set it to not have a password (prohibiting direct login).
 
+NOTE: This repository uses git submodules. You'll need to run `git submodule update --init --recursive` to fetch them.
+
 ## Build and Install
 
 CMake is used - set `CMAKE_INSTALL_PREFIX` to where you want it to end up. (for instance, `/opt/vrpn` works just dandy. Do a `make install` after configuring.
