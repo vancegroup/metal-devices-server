@@ -1,0 +1,2 @@
+install(PROGRAMS up down
+	DESTINATION ${BIN_DIR})

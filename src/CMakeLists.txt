@@ -1,5 +1,3 @@
-cmake_minimum_required(VERSION 2.8.3)
-project(metal-devices-server)
 
 include(ExternalProject)
 
@@ -13,6 +11,8 @@ ExternalProject_Add(wiiuse
 
 ExternalProject_Get_Property(wiiuse INSTALL_DIR)
 set(WIIUSE_ROOT_DIR ${INSTALL_DIR})
+install(FILES "${WIIUSE_ROOT_DIR}/lib/libwiiuse.so"
+	DESTINATION ${LIB_DIR})
 
 ExternalProject_Add(vrpn
 	SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/vrpn
@@ -29,6 +29,10 @@ ExternalProject_Add(vrpn
 
 ExternalProject_Get_Property(vrpn INSTALL_DIR)
 set(VRPN_ROOT_DIR ${INSTALL_DIR})
+
+install(PROGRAMS
+	"${VRPN_ROOT_DIR}/bin/vrpn_server"
+	DESTINATION ${BIN_DIR})
 
 set(VRPN_BIN_DIR ${VRPN_ROOT_DIR}/bin)
 set(VRPN_CFG_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../vrpn_configs)
