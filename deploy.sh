@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DEST=/opt/vrpn-deploy
-AUTOUSER=vrpnrestart
+AUTOUSER=restartvrpn
 
 here=$( pwd )
 tdir=$( mktemp -d )
