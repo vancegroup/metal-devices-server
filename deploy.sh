@@ -17,4 +17,4 @@ cd ${tdir} && \
 	&& make \
 	&& make install \
 	&& cp ${DEST}/upstart/* /etc/init/ \
-	&& cp ${DEST}/ssh/authorized_keys ~${AUTOUSER}/.ssh/authorized_keys
+	&& sudo -u ${AUTOUSER} cp ${DEST}/ssh/authorized_keys ~${AUTOUSER}/.ssh/authorized_keys
