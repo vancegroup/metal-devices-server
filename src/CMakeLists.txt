@@ -6,7 +6,6 @@ ExternalProject_Add(wiiuse
 	CMAKE_ARGS
 		"-DCMAKE_INSTALL_PREFIX:PATH=<INSTALL_DIR>"
 		-DCMAKE_BUILD_TYPE:STRING=RelWithDebInfo
-		-DBUILD_TESTING:BOOL=OFF
 )
 if(WIN32)
 	set(WIIUSE_LIB_NAME lib/wiiuse.lib)
