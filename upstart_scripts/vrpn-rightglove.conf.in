@@ -11,10 +11,25 @@ respawn
 
 env VRPN_HOME=@VRPN_HOME@
 env VRPN_CFG_DIR=@VRPN_CFG_DIR@
+env TAG=vrpn-rightglove
+
+pre-start script
+	logger -t "${TAG}" -- "Pre-start."
+end script
 
 script
+	logger -t "${TAG}" -- "Device server starting up."
 	export LD_LIBRARY_PATH=${VRPN_HOME}/lib
 	exec ${VRPN_HOME}/bin/vrpn_server 3885 -f ${VRPN_CFG_DIR}/vrpn-rightserialglove.cfg
 end script
+
+pre-stop script
+	logger -t "${TAG}" -- "Pre-stop."
+end script
+
+post-stop script
+	logger -t "${TAG}" -- "Device server killed."
+end script
+
 
 
