@@ -26,12 +26,12 @@ script
 	export LD_LIBRARY_PATH=${VRPN_HOME}/lib
 
 	# Based on http://serverfault.com/questions/114052/logging-a-daemons-output-with-upstart
-	mkfifo /tmp/${JOB}-fifo
-	(logger -t "${TAG}" < /tmp/${JOB}-fifo & )
-	exec > /tmp/${JOB}-fifo
-	rm /tmp/${JOB}-fifo
+	#mkfifo /tmp/${JOB}-fifo
+	#(logger -t "${TAG}" < /tmp/${JOB}-fifo & )
+	#exec > /tmp/${JOB}-fifo
+	#rm /tmp/${JOB}-fifo
 
-	exec ${VRPN_HOME}/bin/vrpn_server -f ${VRPN_CFG_DIR}/vrpn-wiimote.cfg 2>&1
+	exec ${VRPN_HOME}/bin/vrpn_server -f ${VRPN_CFG_DIR}/vrpn-wiimote.cfg
 end script
 
 pre-stop script
