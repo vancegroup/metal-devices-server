@@ -16,7 +16,7 @@ env TAG=vrpn-wiimote
 
 pre-start script
 	logger -t "${TAG}" -- "Pre-start."
-	ls /sys/class/bluetooth/* 2>/dev/null || ( logger -t "${TAG}" -- "Nothing in /sys/class/bluetooth/ - stopping." ; stop )
+	ls /sys/class/bluetooth/* >/dev/null 2>/dev/null || ( logger -t "${TAG}" -- "Nothing in /sys/class/bluetooth/ - stopping." ; stop )
 end script
 
 script
