@@ -31,7 +31,7 @@ script
 	exec > /tmp/${JOB}-fifo
 	rm /tmp/${JOB}-fifo
 
-	exec ${VRPN_HOME}/bin/vrpn_server -f ${VRPN_CFG_DIR}/vrpn-wiimote.cfg
+	exec ${VRPN_HOME}/bin/vrpn_server -f ${VRPN_CFG_DIR}/vrpn-wiimote.cfg 2>&1
 end script
 
 pre-stop script
