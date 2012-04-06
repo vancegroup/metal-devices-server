@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Three notes of a minor chord
+
+A='-f 440'
+C="-f 523.25"
+E="-f 659.26"
+
+beep -l 64 -D 64 $A
