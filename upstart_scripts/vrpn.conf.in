@@ -5,6 +5,7 @@ description	"VRPN device server"
 start on (
            (local-filesystems and net-device-up IFACE!=lo)
 		   and (stopped udevtrigger)
+		   and (stopped JOB=rc RUNLEVEL=2)
          ) or (bluetooth-device-added)
 stop on ( (runlevel [016]) or (bluetooth-device-removed) )
 
