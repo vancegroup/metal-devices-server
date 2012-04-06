@@ -6,7 +6,7 @@ start on (
            (local-filesystems and net-device-up IFACE!=lo)
 		   and (stopped udevtrigger)
 		   and (bluetooth-device-added)
-         )
+         ) or (bluetooth-device-added)
 stop on ( (runlevel [016]) or (bluetooth-device-removed) )
 
 respawn
