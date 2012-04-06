@@ -24,7 +24,7 @@ script
 
 	# Based on http://serverfault.com/questions/114052/logging-a-daemons-output-with-upstart
 	mkfifo /tmp/${JOB}-fifo
-	(logger -t "${TAG}" < /tmp/${JOB}-fifo & )
+	#(logger -t "${TAG}" < /tmp/${JOB}-fifo & )
 	exec > /tmp/${JOB}-fifo
 	rm /tmp/${JOB}-fifo
 
