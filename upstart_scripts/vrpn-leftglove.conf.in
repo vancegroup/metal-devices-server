@@ -18,6 +18,7 @@ end script
 
 script
 	logger -t "${TAG}" -- "Device server starting up."
+	${VRPN_HOME}/bin/up-progress
 	export LD_LIBRARY_PATH=${VRPN_HOME}/lib
 	exec ${VRPN_HOME}/bin/vrpn_server 3884 -f ${VRPN_CFG_DIR}/vrpn-leftserialglove.cfg
 end script
@@ -28,6 +29,7 @@ pre-stop script
 end script
 
 post-stop script
+	${VRPN_HOME}/bin/down-progress
 	logger -t "${TAG}" -- "Device server killed."
 end script
 
