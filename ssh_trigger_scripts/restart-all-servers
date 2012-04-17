@@ -2,6 +2,8 @@
 
 #beep
 
+logger -t "device-server" "restart-all-servers called, $SSH_ORIGINAL_COMMAND"
+
 cd $(dirname $0)
 ./down
 
