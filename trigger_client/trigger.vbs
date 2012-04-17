@@ -1,4 +1,5 @@
 Set WshShell = WScript.CreateObject("WScript.Shell")
+Set WshNetwork = WScript.CreateObject("WScript.Network")
 dp0 = Replace(WScript.ScriptFullName, WScript.ScriptName, "")
 
 action = ""
@@ -13,6 +14,7 @@ identity = """" & dp0 & action & "_key"""
 user = "restartvrpn"
 account = user & "@metal-devices.vrac.iastate.edu"
 
-WshShell.Run ssh & " -o 'StrictHostKeyChecking no' -i " & identity & " " & account, 0, true
+' Pass the local username as the "command" so we can log it.
+WshShell.Run ssh & " -o 'StrictHostKeyChecking no' -i " & identity & " " & account & " " & WshNetwork.UserName, 0, true
 
 WshShell.Popup "metal-devices command " & action & " completed!", 15, action & " Completed", 0
