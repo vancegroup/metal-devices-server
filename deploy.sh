@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DEST=/opt/vrpn-deploy
-AUTOUSER=restartvrpn
+AUTOUSER=vrpn
 
 log () {
 	logger -t "device-server" "deploy.sh: $1"

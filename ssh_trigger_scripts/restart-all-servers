@@ -8,14 +8,10 @@ cd $(dirname $0)
 ./down
 
 sudo service vrpn stop
-sudo service vrpn-leftglove stop
-sudo service vrpn-rightglove stop
 
 sleep 5
 
 sudo service vrpn start
-sudo service vrpn-leftglove start
-sudo service vrpn-rightglove start
 
 ./up
 #beep

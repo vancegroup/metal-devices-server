@@ -2,5 +2,5 @@ configure_file(authorized_keys.in ${CMAKE_CURRENT_BINARY_DIR}/authorized_keys @O
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/authorized_keys
 	DESTINATION ${SSH_DIR})
 
-install(PROGRAMS restart-all-servers restart-computer
+install(PROGRAMS restart-all-servers
 	DESTINATION ${BIN_DIR})

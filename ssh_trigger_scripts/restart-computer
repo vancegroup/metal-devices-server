@@ -1,6 +1,0 @@
-#!/bin/sh
-beep
-
-logger -t "device-server" "restart-computer called, $SSH_ORIGINAL_COMMAND"
-
-sudo /sbin/shutdown -r now

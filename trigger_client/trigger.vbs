@@ -11,10 +11,10 @@ action = WScript.Arguments(0)
 
 ssh = """" & dp0 & "ssh.exe"""
 identity = """" & dp0 & action & "_key"""
-user = "restartvrpn"
-account = user & "@metal-devices.vrac.iastate.edu"
+user = "vrpn"
+account = user & "@no-salt.vrac.iastate.edu"
 
 ' Pass the local username as the "command" so we can log it.
 WshShell.Run ssh & " -o 'StrictHostKeyChecking no' -i " & identity & " " & account & " " & WshNetwork.UserName, 0, true
 
-WshShell.Popup "metal-devices command " & action & " completed!", 15, action & " Completed", 0
+WshShell.Popup "haptics-lab command " & action & " completed!", 15, action & " Completed", 0
