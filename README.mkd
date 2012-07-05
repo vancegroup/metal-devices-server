@@ -17,6 +17,8 @@ Then, there are just two things you must do manually:
 
 The scripts in this root directory are intended to help get a system set up to be the target. Once running all the permissions scripts (passing `/opt/vrpn-deploy` to `set_permissions_for_dest.sh`) and setting up the sudoer file as below, you can run a script like `deploy.sh`, which builds in a temporary directory, installs to your desired destination, updates the upstart config files, updates the `authorized_keys` file, then finally restarts all the VRPN servers so that you're using the new build.
 
+May also need to run `ssh-keygen -t dsa -N "" -f ~/.ssh/id_dsa` as your restarting user to make an appropriately-permissioned `.ssh` directory, and edit /etc/shadow to replace your restarting user's password (the second field) with `!`
+
 
 ## Sudo configuration
 
